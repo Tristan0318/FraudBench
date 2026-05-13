@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="FraudBench: A Multimodal Benchmark for Detecting AI-Generated Fraudulent Refund Evidence. A benchmark with 822 reviews and 7,928 images across 29 categories for claim-conditioned AI-generated image detection.">
+  <meta name="keywords" content="FraudBench, AI-generated image detection, fraud detection, multimodal benchmark, refund fraud, MLLM, deepfake, e-commerce">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="FraudBench: A Multimodal Benchmark for Detecting AI-Generated Fraudulent Refund Evidence">
+  <meta property="og:description" content="A multimodal benchmark with 822 reviews and 7,928 images for detecting AI-generated fraudulent refund evidence across e-commerce, food delivery, and travel services.">
+  <title>FraudBench</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════════════════════════ -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" style="color: #5252AD; font-weight: 600;">
+            Related Research
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/Megum1/CO-SPY" target="_blank">CO-SPY</a>
+            <a class="navbar-item" href="https://github.com/Yingjian-Chen/ForgeLens" target="_blank">ForgeLens</a>
+            <a class="navbar-item" href="https://github.com/YZY-stack/Effort-AIGI-Detection" target="_blank">Effort</a>
+            <a class="navbar-item" href="https://github.com/liyih/IAPL" target="_blank">IAPL</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     HERO — Title + Authors + Links
+═══════════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <!-- Title -->
+          <h1 class="title is-1 publication-title">
+            <span class="fraudbench">FraudBench</span>: A Multimodal Benchmark for Detecting
+            AI-Generated Fraudulent Refund Evidence
+          </h1>
+
+          <!-- Authors -->
+          <div class="is-size-5 publication-authors" style="margin-top:1rem;">
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=QXkrWQoAAAAJ" style="text-decoration:none;">Xinyu Yan</a><sup>1,2</sup>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Boyang_Chen6">Boyang Chen</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://jiamingzhang94.github.io/">Jiaming Zhang</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=7YsN6lMAAAAJ">Tiantong Wu</a><sup>1,2</sup>,</span>
+            <span class="author-block"><a href="https://bryanhx.github.io/">Hong Xi Tae</a><sup>1</sup>,</span>
+            <br>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Yichen_He5">Yichen He</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Tiantong_Wang1">Tiantong Wang</a><sup>1,2</sup>,</span>
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=hqLGERIAAAAJ">Yachun Mi</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://yuronghaoa.github.io/yuronghaoA/">Yurong Hao</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://elainezhao92.github.io/">Yilei Zhao</a><sup>1</sup>,</span>
+            <br>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Lei_Xiao7">Lei Xiao</a><sup>3</sup>,</span>
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=EQDfV9cAAAAJ">Longtao Huang</a><sup>3</sup>,</span>
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=K2CHjf0AAAAJ">Pengjun Xie</a><sup>3</sup>,</span>
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=yXeVDeoAAAAJ">Wei Liu</a><sup>3</sup>,</span>
+            <span class="author-block"><a href="https://sites.google.com/view/wyb/people" style="text-decoration:none;">Wei Yang Bryan Lim</a><sup>1</sup></span>
+          </div>
+
+          <!-- Affiliations -->
+          <div class="affiliation-block" style="margin-top:0.8rem; color:#555; font-size:1.2rem;">
+            <sup>1</sup>College of Computing and Data Science, Nanyang Technological University
+            <br>
+            <sup>2</sup>Alibaba-NTU Global e-Sustainability CorpLab (ANGEL)
+            <br>
+            <sup>3</sup>Alibaba Group
+          </div>
+
+          <!-- Links -->
+          <div class="column has-text-centered" style="margin-top:1.2rem;">
+            <div class="publication-links">
+
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2605.08820" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2605.08820" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://github.com/Tristan0318/FraudBench" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/TristanYan/FraudBench" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark" style="background:#5252AD; border-color:#5252AD;">
+                  <span class="icon">🤗</span>
+                  <span>Dataset</span>
+                </a>
+              </span>
+
+            </div>
+          </div><!-- /links -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     TEASER — Key Statistics
+═══════════════════════════════════════════════════════════════ -->
+<section class="section" style="padding-top:0; padding-bottom:2rem; background:#fafafa; border-top:1px solid #eee; border-bottom:1px solid #eee;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered" style="margin-top:1.5rem;">
+
+      <div class="column is-2">
+        <div class="stat-box">
+          <div class="stat-number">822</div>
+          <div class="stat-label">Real-World<br>Review Samples</div>
+        </div>
+      </div>
+
+      <div class="column is-2">
+        <div class="stat-box">
+          <div class="stat-number">7,928</div>
+          <div class="stat-label">Total<br>Images</div>
+        </div>
+      </div>
+
+      <div class="column is-2">
+        <div class="stat-box">
+          <div class="stat-number">29</div>
+          <div class="stat-label">Total<br>Categories</div>
+        </div>
+      </div>
+
+      <div class="column is-2">
+        <div class="stat-box">
+          <div class="stat-number">6</div>
+          <div class="stat-label">AI Generation<br>Models</div>
+        </div>
+      </div>
+
+      <div class="column is-2">
+        <div class="stat-box">
+          <div class="stat-number">5</div>
+          <div class="stat-label">Evaluation<br>Dimensions</div>
+        </div>
+      </div>
+
+      <div class="column is-2">
+        <div class="stat-box">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Models &amp;<br>Detectors</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Generator badges -->
+    <div class="has-text-centered" style="margin-top:1rem;">
+      <span style="font-size:0.95rem; color:#888; margin-right:0.5rem;">Synthesized with:</span>
+      <span class="generator-badge" style="font-size:0.88rem; padding:0.28rem 0.7rem;">GPT Image 2</span>
+      <span class="generator-badge" style="font-size:0.88rem; padding:0.28rem 0.7rem;">Grok Imagine</span>
+      <span class="generator-badge" style="font-size:0.88rem; padding:0.28rem 0.7rem;">Nano Banana 2</span>
+      <span class="generator-badge" style="font-size:0.88rem; padding:0.28rem 0.7rem;">Wan2.7-Image</span>
+      <span class="generator-badge" style="font-size:0.88rem; padding:0.28rem 0.7rem;">Qwen-Image-2.0</span>
+      <span class="generator-badge" style="font-size:0.88rem; padding:0.28rem 0.7rem;">Qwen-Image-Edit</span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     ABSTRACT
+═══════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-sixths">
+
+        <h2 class="title is-3">Abstract</h2>
+
+        <div class="abstract-content has-text-justified">
+          <p>
+            Artificial Intelligence (AI)-generated images have become increasingly realistic and
+            readily adaptable to concrete real-world claims, creating new challenges for verifying
+            visual evidence. A concrete emerging risk is <strong>AI-generated refund fraud</strong>,
+            in which manipulated or synthetic images are used to support claims about damaged
+            products, poor delivery conditions, or service-related defects. Existing AI-generated
+            image detection benchmarks mainly evaluate standalone authenticity classification,
+            cross-generator transfer, or forensic localization, leaving
+            <em>claim-conditioned fraudulent evidence detection</em> underexplored.
+          </p>
+          <p style="margin-top:0.8rem;">
+            To bridge this gap, we introduce <strong>FraudBench</strong>,
+            a multimodal benchmark for detecting AI-generated fraudulent refund evidence.
+            FraudBench is constructed from real-world user-review evidence across e-commerce,
+            food delivery, and travel-service scenarios. We curate real evidence images together
+            with their associated review and product metadata, identify genuine damaged and
+            undamaged evidence through MLLM-assisted filtering and human annotation, and
+            synthesize fake-damaged evidence from genuine undamaged reference images using
+            <strong>six state-of-the-art image editing and generation models</strong>.
+          </p>
+          <p style="margin-top:0.8rem;">
+            Using FraudBench, we evaluate <strong>11 MLLMs</strong>, <strong>4 specialized
+            AI-generated image detectors</strong>, and <strong>human participants</strong> under
+            the same settings. Experiments show that current MLLMs often recognize real-damaged
+            evidence but <em>fail</em> on many fake-damaged subsets, with fake-damage detection
+            rates (TPR) far below the 50% baseline on most generator subsets. Specialized
+            detectors generally perform better but remain inconsistent across generators and
+            can produce false positives on real-damaged samples, revealing a clear gap between
+            generic AI image detection and reliable claim-conditioned refund-evidence verification.
+          </p>
+        </div>
+
+        <div class="note-box has-text-left" style="font-size:1rem; padding:1.1rem 1.5rem; font-weight:600;">
+          <strong>⚠️ Note:</strong> This paper is intended solely for academic research purposes.
+          It studies the risk of AI-generated fraudulent refund evidence to support the
+          development of more reliable detection methods, platform safeguards, and responsible
+          evaluation. The goal is not to facilitate refund fraud or provide actionable guidance
+          for misuse.
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     PIPELINE FIGURE
+═══════════════════════════════════════════════════════════════ -->
+<section class="section" style="background:#fafafa; border-top:1px solid #eee; border-bottom:1px solid #eee;">
+  <div class="container is-max-desktop">
+
+    <h2 class="title is-3 has-text-centered">Construction Pipeline</h2>
+
+    <div class="pipeline-figure" style="max-width:900px; margin:0 auto;">
+      <img src="./static/images/construction_pipeline.png"
+           alt="FraudBench Construction Pipeline"
+           onerror="this.parentElement.innerHTML='<div style=\'padding:3rem; text-align:center; color:#888; background:#f5f5f5;\'>📄 Figure: Construction Pipeline<br><small style=\'color:#aaa;\'>Place construction_pipeline.png in static/images/</small></div>'">
+    </div>
+
+    <div class="content has-text-centered" style="margin-top:1.2rem; font-size:1rem; color:#555; max-width:800px; margin-left:auto; margin-right:auto;">
+      <strong>Figure 1.</strong> Construction pipeline of FraudBench in three stages:
+      <strong>(1) Data Collection</strong> — real-world refund evidence from four sources across
+      29 categories.
+      <strong>(2) Data Preprocessing</strong> — multimodal aggregation, two-level cleaning,
+      rule-based filtering, representative sampling, and anonymization with human verification.
+      <strong>(3) Synthetic Evidence Generation</strong> — image-specific prompts fed to six
+      SOTA models, with human quality control.
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     BENCHMARK OVERVIEW
+═══════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <h2 class="title is-3 has-text-centered">Benchmark Overview</h2>
+
+    <div class="columns is-centered">
+      <div class="column is-10">
+
+        <!-- Data breakdown -->
+        <div style="border-radius:10px; overflow:hidden; border:1.5px solid #d8d8f0; box-shadow:0 2px 10px rgba(82,82,173,0.07);">
+          <div style="padding:0.85rem 1.2rem; background:#fff; border-bottom:1px solid #ebebf5;">
+            <h3 class="title is-5" style="color:#5252AD; margin-bottom:0;">📊 Dataset Composition</h3>
+          </div>
+          <table class="dataset-table">
+            <thead>
+              <tr>
+                <th>Data Split</th>
+                <th class="count-col">Images</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="split-badge real-damaged">Real-Damaged</span></td>
+                <td class="count-col">1,012</td>
+                <td class="desc-col">
+                  Genuine user-submitted damaged evidence
+                  <br><span style="color:#aaa; font-size:0.82rem;">Evaluation set · negative class</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="split-badge real-undamaged">Real-Undamaged</span></td>
+                <td class="count-col">988</td>
+                <td class="desc-col">
+                  Genuine undamaged reference images
+                  <br><span style="color:#aaa; font-size:0.82rem;">Synthesis source only · excluded from evaluation</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="split-badge fake-damaged">Fake-Damaged</span></td>
+                <td class="count-col">5,928</td>
+                <td class="desc-col">
+                  AI-synthesized: 988 references × 6 generators
+                  <br><span style="color:#aaa; font-size:0.82rem;">Evaluation set · positive class</span>
+                </td>
+              </tr>
+              <tr class="total-row">
+                <td><strong>Total</strong></td>
+                <td class="count-col"><strong>7,928</strong></td>
+                <td class="desc-col">
+                  <strong>822</strong> Reviews &nbsp;·&nbsp; <strong>29</strong> Categories &nbsp;·&nbsp; <strong>4</strong> Data Sources
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Data sources -->
+        <div class="box" style="border:1.5px solid #e0e0ff; margin-top:1rem;">
+          <h3 class="title is-5">🌐 Data Sources &amp; Scenarios</h3>
+          <div class="columns is-multiline">
+            <div class="column is-6">
+              <div style="padding:0.8rem; background:#F1F0FF; border-radius:8px; height:100%;">
+                <strong><a href="https://amazon-reviews-2023.github.io/main.html" target="_blank">Amazon Reviews 2023</a></strong>
+                <p style="font-size:0.88rem; margin-top:0.3rem; color:#444;">590 review samples across 27 e-commerce product categories</p>
+              </div>
+            </div>
+            <div class="column is-6">
+              <div style="padding:0.8rem; background:#F1F0FF; border-radius:8px; height:100%;">
+                <strong>Trip.com</strong>
+                <p style="font-size:0.88rem; margin-top:0.3rem; color:#444;">Travel-service reviews covering hotel, attraction, and transportation complaints</p>
+              </div>
+            </div>
+            <div class="column is-6">
+              <div style="padding:0.8rem; background:#F1F0FF; border-radius:8px; height:100%;">
+                <strong>GrabFood</strong>
+                <p style="font-size:0.88rem; margin-top:0.3rem; color:#444;">Food delivery and dine-in &amp; pickup service evidence</p>
+              </div>
+            </div>
+            <div class="column is-6">
+              <div style="padding:0.8rem; background:#F1F0FF; border-radius:8px; height:100%;">
+                <strong>In-House Captured</strong>
+                <p style="font-size:0.88rem; margin-top:0.3rem; color:#444;">Self-collected real-world samples under everyday acquisition conditions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mode representative figure -->
+    <div style="max-width:900px; margin:1.5rem auto 0;">
+      <div class="pipeline-figure">
+        <img src="./static/images/mode_representative.png"
+             alt="FraudBench Evaluation Modes"
+             onerror="this.parentElement.innerHTML='<div style=\'padding:3rem; text-align:center; color:#888; background:#f5f5f5;\'>📄 Figure: Evaluation Mode Examples<br><small style=\'color:#aaa;\'>Place mode_representative.png in static/images/</small></div>'">
+      </div>
+      <p class="has-text-centered" style="font-size:1rem; color:#555; margin-top:0.8rem;">
+        <strong>Figure 2.</strong> Representative examples covering the five evaluation dimensions:
+        input modality, contextual information, multi-step reasoning, prompt sensitivity, and
+        real image preservation.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     EVALUATION DIMENSIONS
+═══════════════════════════════════════════════════════════════ -->
+<section class="section" style="background:#fafafa; border-top:1px solid #eee; border-bottom:1px solid #eee;">
+  <div class="container is-max-desktop">
+
+    <h2 class="title is-3 has-text-centered">Evaluation Protocol</h2>
+    <p class="has-text-centered" style="font-size:1.2rem; color:#555; max-width:700px; margin:0 auto 2rem;">
+      FraudBench evaluates detection capability along <strong>five complementary dimensions</strong>
+      reflecting real-world refund-evidence verification conditions.
+    </p>
+
+    <div class="columns is-multiline is-centered">
+
+      <div class="column is-4">
+        <div class="dimension-card">
+          <div class="dimension-number">1</div>
+          <div class="dimension-title">Input Modality</div>
+          <p style="font-size:1rem; color:#555;">
+            <strong>Single-Image</strong> vs. <strong>Multi-Image</strong> evaluation.
+            Multi-image setting allows the model to exploit cross-image cues such as
+            consistent lighting, viewpoint, and damage appearance within the same review.
+          </p>
+        </div>
+      </div>
+
+      <div class="column is-4">
+        <div class="dimension-card">
+          <div class="dimension-number">2</div>
+          <div class="dimension-title">Contextual Information</div>
+          <p style="font-size:1rem; color:#555;">
+            <strong>Review-Free</strong> vs. <strong>Review-Conditioned</strong> evaluation.
+            Tests whether associated user review text improves detection quality or
+            introduces misleading shortcuts.
+          </p>
+        </div>
+      </div>
+
+      <div class="column is-4">
+        <div class="dimension-card">
+          <div class="dimension-number">3</div>
+          <div class="dimension-title">Multi-Step Reasoning</div>
+          <p style="font-size:1rem; color:#555;">
+            Compares <strong>direct joint inference</strong> against a
+            <strong>structured per-image decomposition</strong> step before a final aggregated
+            verdict, testing whether evidence integration improves reliability.
+          </p>
+        </div>
+      </div>
+
+      <div class="column is-4">
+        <div class="dimension-card">
+          <div class="dimension-number">4</div>
+          <div class="dimension-title">Prompt Sensitivity</div>
+          <p style="font-size:1rem; color:#555;">
+            Evaluates each detector with <strong>five semantically equivalent prompt styles</strong>
+            to measure whether decisions are driven by stable visual evidence or
+            surface prompt phrasing.
+          </p>
+        </div>
+      </div>
+
+      <div class="column is-4">
+        <div class="dimension-card">
+          <div class="dimension-number">5</div>
+          <div class="dimension-title">Real Image Preservation</div>
+          <p style="font-size:1rem; color:#555;">
+            Assesses <strong>True Negative Rate (TNR)</strong> on genuine damaged evidence.
+            Central to trustworthy refund adjudication — falsely accusing an honest
+            customer damages platform trust.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Asymmetric risk note -->
+    <div class="columns is-centered" style="margin-top:1.5rem;">
+      <div class="column is-10">
+        <div style="background:#fff8f0; border:1.5px solid #e8a04a; border-radius:10px; padding:1.5rem; text-align:center;">
+          <strong style="color:#7a4a00; font-size:1.1rem;">⚖️ Asymmetric Risk in Refund Verification</strong>
+          <div class="columns is-centered" style="margin-top:1rem;">
+            <div class="column is-5" style="background:#fff3e0; border-radius:8px; margin:0 0.3rem; padding:1rem;">
+              <strong style="color:#e65100; font-size:1.05rem;">False Positive</strong>
+              <p style="font-size:1rem; color:#555; margin-top:0.4rem;">
+                Wrongly Accusing an Honest Customer → Severe Trust Crisis
+              </p>
+            </div>
+            <div class="column is-1 has-text-centered" style="display:flex; align-items:center; justify-content:center; font-size:1.6rem; color:#aaa;">
+              vs
+            </div>
+            <div class="column is-5" style="background:#fbe9e7; border-radius:8px; margin:0 0.3rem; padding:1rem;">
+              <strong style="color:#b71c1c; font-size:1.05rem;">False Negative</strong>
+              <p style="font-size:1rem; color:#555; margin-top:0.4rem;">
+                Missing AI-Fabricated Evidence → Direct Financial Losses
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     KEY FINDINGS
+═══════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <h2 class="title is-3 has-text-centered">Key Findings</h2>
+
+    <!-- Central dilemma -->
+    <div class="columns is-centered" style="margin-bottom:1.5rem;">
+      <div class="column is-10">
+        <div class="dilemma-box">
+          <p style="font-size:1.2rem; color:#666; margin-bottom:0.5rem;">The Central Dilemma of Current Detection Paradigms</p>
+          <div>
+            <span class="dilemma-label">Over-Credulity (MLLMs)</span>
+            <span class="vs-label">vs.</span>
+            <span class="dilemma-label">Over-Sensitivity (Specialized Detectors)</span>
+          </div>
+          <p style="font-size:1.2rem; color:#666; margin-top:0.8rem; padding:0 2rem;">
+            MLLMs preserve genuine evidence but systematically miss AI-manipulated damage.
+            Specialized detectors detect synthetic images but frequently flag real damaged goods as fake.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Individual finding cards -->
+    <div class="columns is-multiline">
+
+      <div class="column is-6">
+        <div class="box" style="border-left:4px solid #5252AD; height:100%;">
+          <span class="finding-tag">Finding 1</span>
+          <h4 class="title is-6" style="margin-top:0.5rem; color:#5252AD; font-size:1.2rem;">MLLM Failures Driven by Under-Detection</h4>
+          <p style="font-size:1rem; color:#444;">
+            Across MLLMs in the single-image no-review setting, the average
+            <strong>real-image TNR is 0.947</strong> — but the average
+            <strong>fake-damage TPR is only 0.197</strong>. The dominant failure mode
+            is not excessive rejection of genuine evidence, but systematic
+            under-detection of synthetic refund claims.
+          </p>
+        </div>
+      </div>
+
+      <div class="column is-6">
+        <div class="box" style="border-left:4px solid #5252AD; height:100%;">
+          <span class="finding-tag">Finding 2</span>
+          <h4 class="title is-6" style="margin-top:0.5rem; color:#5252AD; font-size:1.2rem;">Strong Generator Effects</h4>
+          <p style="font-size:1rem; color:#444;">
+            Detection difficulty varies substantially across generators.
+            Average MLLM TPR is only <strong>0.080 on GPT Image 2</strong> but
+            rises to <strong>0.351 on Qwen-Image-Edit</strong>. Frontier text-to-image
+            models produce more visually integrated fake-damaged evidence than
+            image-editing pipelines.
+          </p>
+        </div>
+      </div>
+
+      <div class="column is-6">
+        <div class="box" style="border-left:4px solid #5252AD; height:100%;">
+          <span class="finding-tag">Finding 3</span>
+          <h4 class="title is-6" style="margin-top:0.5rem; color:#5252AD; font-size:1.2rem;">Specialized Detectors: Strong but Unreliable</h4>
+          <p style="font-size:1rem; color:#444;">
+            The best specialized detector (ForgeLens [GenImage]) achieves
+            <strong>0.904 balanced accuracy</strong> but is highly checkpoint-dependent.
+            Effort [Chameleon] achieves high TPR (avg 0.854) but only
+            <strong>TNR of 0.051</strong> on real images — making it unsuitable
+            for real-world refund adjudication.
+          </p>
+        </div>
+      </div>
+
+      <div class="column is-6">
+        <div class="box" style="border-left:4px solid #5252AD; height:100%;">
+          <span class="finding-tag">Finding 4</span>
+          <h4 class="title is-6" style="margin-top:0.5rem; color:#5252AD; font-size:1.2rem;">Context Helps — When Properly Aggregated</h4>
+          <p style="font-size:1rem; color:#444;">
+            Multi-image context significantly boosts Gemini 3 Flash from
+            <strong>0.720</strong> (single-image+review) to <strong>0.823 balanced accuracy</strong>
+            (multi-image+review). Yet review text alone adds minimal gain (+0.005),
+            revealing that models struggle to ground textual claims in visual evidence.
+          </p>
+        </div>
+      </div>
+
+      <div class="column is-6">
+        <div class="box" style="border-left:4px solid #5252AD; height:100%;">
+          <span class="finding-tag">Finding 5</span>
+          <h4 class="title is-6" style="margin-top:0.5rem; color:#5252AD; font-size:1.2rem;">Damage Type Shapes Difficulty</h4>
+          <p style="font-size:1rem; color:#444;">
+            Salient defects (cracked, leaking, shattered) are easier to detect
+            (avg TPR ~0.25–0.30). Subtle deformations (packaging-damaged, bent/warped)
+            are much harder (avg TPR ~0.12–0.14). Packaging-damage detection is
+            near zero for several MLLMs.
+          </p>
+        </div>
+      </div>
+
+      <div class="column is-6">
+        <div class="box" style="border-left:4px solid #5252AD; height:100%;">
+          <span class="finding-tag">Finding 6</span>
+          <h4 class="title is-6" style="margin-top:0.5rem; color:#5252AD; font-size:1.2rem;">Humans Also Struggle</h4>
+          <p style="font-size:1rem; color:#444;">
+            Human participants outperform most MLLMs but still exhibit
+            non-negligible error rates. For the easiest generator (Qwen-Image-Edit),
+            human TPR is <strong>0.709</strong> vs. <strong>0.793 TNR</strong>,
+            confirming that even manual inspection struggles with these
+            highly realistic AI manipulations.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     RESULTS TABLE
+═══════════════════════════════════════════════════════════════ -->
+<section class="section" style="background:#fafafa; border-top:1px solid #eee; border-bottom:1px solid #eee;">
+  <div class="container is-max-widescreen">
+
+    <h2 class="title is-3 has-text-centered">Experimental Results</h2>
+    <p class="has-text-centered" style="font-size:1.2rem; color:#666; margin-bottom:0.4rem;">
+      Single-Image, No-Review Setting &nbsp;·&nbsp;
+      TPR&nbsp;↑ = Fake-Damage Detection Rate &nbsp;·&nbsp;
+      TNR&nbsp;↑ = Real-Image Preservation Rate
+    </p>
+    <p class="has-text-centered" style="font-size:1.2rem; color:#999; margin-bottom:1.8rem;">
+      <strong>Bold</strong> = Best in Group &nbsp;|&nbsp;
+      <u>Underline</u> = Second Best &nbsp;|&nbsp;
+      <span style="color:#c62828; font-weight:700;">Red</span> = Problematic Value
+    </p>
+
+    <!-- ── MLLMs ── -->
+    <span class="group-label" style="background:#E8E8FF;">
+      Multimodal Large Language Models (MLLMs)
+    </span>
+    <div class="table-scroll">
+      <table class="leaderboard-table">
+        <thead>
+          <tr>
+            <th class="model-col" rowspan="2">Model</th>
+            <th colspan="6">Fake-Damage TPR ↑ &nbsp;·&nbsp; by Generator</th>
+            <th class="overall-col" colspan="2">Overall</th>
+            <th class="tnr-col" rowspan="2">Real-Damaged<br>TNR ↑</th>
+          </tr>
+          <tr>
+            <th>GPT Image 2</th>
+            <th>Grok Imagine</th>
+            <th>Nano Banana 2</th>
+            <th>Wan2.7-Image</th>
+            <th>Qwen-Image-2.0</th>
+            <th>Qwen-Image-Edit</th>
+            <th class="overall-col">Bal.Acc ↑</th>
+            <th class="overall-col">F1 ↑</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="model-col">GPT-5.4 mini</td>
+            <td>0.040</td><td>0.045</td><td>0.083</td><td>0.129</td><td>0.147</td><td>0.285</td>
+            <td class="overall-col">0.558</td><td class="overall-col">0.212</td>
+            <td class="tnr-col best">0.994</td>
+          </tr>
+          <tr>
+            <td class="model-col">Gemini 3 Flash</td>
+            <td class="second-best">0.158</td><td>0.199</td><td>0.258</td>
+            <td class="best">0.398</td><td class="best">0.491</td><td class="best">0.692</td>
+            <td class="overall-col best">0.674</td><td class="overall-col best">0.526</td>
+            <td class="tnr-col">0.982</td>
+          </tr>
+          <tr>
+            <td class="model-col">Grok 4.1 Fast Reasoning</td>
+            <td>0.105</td><td>0.135</td><td>0.144</td><td>0.188</td><td>0.218</td><td>0.262</td>
+            <td class="overall-col">0.538</td><td class="overall-col">0.279</td>
+            <td class="tnr-col">0.901</td>
+          </tr>
+          <tr>
+            <td class="model-col">Grok 4.20 Reasoning</td>
+            <td>0.062</td><td>0.065</td><td>0.141</td><td>0.199</td><td>0.161</td><td>0.242</td>
+            <td class="overall-col">0.562</td><td class="overall-col">0.244</td>
+            <td class="tnr-col">0.979</td>
+          </tr>
+          <tr>
+            <td class="model-col">Kimi K2.6</td>
+            <td>0.026</td><td>0.052</td><td>0.079</td><td>0.218</td><td>0.260</td><td>0.356</td>
+            <td class="overall-col">0.581</td><td class="overall-col">0.277</td>
+            <td class="tnr-col">0.996</td>
+          </tr>
+          <tr>
+            <td class="model-col">Qwen3.6-Plus</td>
+            <td>0.077</td><td>0.140</td><td>0.179</td><td>0.266</td><td>0.325</td><td>0.441</td>
+            <td class="overall-col second-best">0.608</td><td class="overall-col">0.371</td>
+            <td class="tnr-col">0.977</td>
+          </tr>
+          <tr>
+            <td class="model-col">Qwen3.6-35B-A3B</td>
+            <td>0.144</td>
+            <td class="best">0.242</td>
+            <td class="second-best">0.262</td>
+            <td class="second-best">0.365</td>
+            <td class="second-best">0.407</td>
+            <td class="second-best">0.531</td>
+            <td class="overall-col">0.603</td><td class="overall-col second-best">0.476</td>
+            <td class="tnr-col">0.882</td>
+          </tr>
+          <tr>
+            <td class="model-col">Qwen3.5-Omni-Plus</td>
+            <td>0.008</td><td>0.035</td><td>0.049</td><td>0.103</td><td>0.137</td><td>0.202</td>
+            <td class="overall-col">0.544</td><td class="overall-col">0.159</td>
+            <td class="tnr-col best">1.000</td>
+          </tr>
+          <tr>
+            <td class="model-col">Qwen3-VL-Flash</td>
+            <td>0.043</td><td>0.090</td><td>0.172</td><td>0.247</td><td>0.278</td><td>0.364</td>
+            <td class="overall-col">0.592</td><td class="overall-col">0.321</td>
+            <td class="tnr-col">0.986</td>
+          </tr>
+          <tr>
+            <td class="model-col">Qwen3-VL-Plus</td>
+            <td>0.002</td><td>0.006</td><td>0.024</td><td>0.050</td><td>0.049</td><td>0.108</td>
+            <td class="overall-col">0.518</td><td class="overall-col">0.075</td>
+            <td class="tnr-col second-best">0.997</td>
+          </tr>
+          <tr>
+            <td class="model-col">QVQ-Max-Latest</td>
+            <td class="best">0.220</td>
+            <td class="second-best">0.239</td>
+            <td class="best">0.294</td>
+            <td>0.321</td><td>0.335</td><td>0.383</td>
+            <td class="overall-col">0.510</td><td class="overall-col">0.438</td>
+            <td class="tnr-col">0.721</td>
+          </tr>
+          <tr class="baseline-row">
+            <td class="model-col">Random Guessing</td>
+            <td>0.500</td><td>0.500</td><td>0.500</td><td>0.500</td><td>0.500</td><td>0.500</td>
+            <td class="overall-col">0.500</td><td class="overall-col">—</td>
+            <td class="tnr-col">0.500</td>
+          </tr>
+          <tr class="human-row">
+            <td class="model-col">Human Reference</td>
+            <td>0.420</td><td>0.509</td><td>0.539</td><td>0.598</td><td>0.697</td><td>0.709</td>
+            <td class="overall-col">0.686</td><td class="overall-col">0.704</td>
+            <td class="tnr-col">0.793</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ── Specialized Detectors ── -->
+    <span class="group-label" style="background:#E8E8FF; margin-top:2rem; display:inline-block;">
+      Specialized AI-Generated Image Detectors
+    </span>
+    <div class="table-scroll">
+      <table class="leaderboard-table">
+        <thead>
+          <tr>
+            <th class="model-col" rowspan="2">Model</th>
+            <th colspan="6">Fake-Damage TPR ↑ &nbsp;·&nbsp; by Generator</th>
+            <th class="overall-col" colspan="2">Overall</th>
+            <th class="tnr-col" rowspan="2">Real-Damaged<br>TNR ↑</th>
+          </tr>
+          <tr>
+            <th>GPT Image 2</th>
+            <th>Grok Imagine</th>
+            <th>Nano Banana 2</th>
+            <th>Wan2.7-Image</th>
+            <th>Qwen-Image-2.0</th>
+            <th>Qwen-Image-Edit</th>
+            <th class="overall-col">Bal.Acc ↑</th>
+            <th class="overall-col">F1 ↑</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="model-col">CO-SPY [ProGAN]</td>
+            <td class="best">0.977</td><td>0.099</td><td>0.312</td><td>0.218</td><td>0.894</td><td class="best">0.996</td>
+            <td class="overall-col">0.782</td><td class="overall-col">0.733</td>
+            <td class="tnr-col best">0.982</td>
+          </tr>
+          <tr>
+            <td class="model-col">CO-SPY [SD-v1.4]</td>
+            <td>0.360</td><td>0.310</td><td>0.282</td><td>0.360</td><td>0.339</td><td>0.349</td>
+            <td class="overall-col">0.509</td><td class="overall-col">0.455</td>
+            <td class="tnr-col">0.685</td>
+          </tr>
+          <tr>
+            <td class="model-col">ForgeLens [ProGAN]</td>
+            <td>0.700</td><td>0.217</td><td>0.516</td><td>0.823</td><td>0.859</td><td>0.925</td>
+            <td class="overall-col second-best">0.815</td><td class="overall-col">0.798</td>
+            <td class="tnr-col">0.958</td>
+          </tr>
+          <tr>
+            <td class="model-col">ForgeLens [GenImage]</td>
+            <td>0.967</td><td>0.158</td>
+            <td class="best">1.000</td>
+            <td class="second-best">0.990</td>
+            <td class="best">1.000</td>
+            <td>0.989</td>
+            <td class="overall-col best">0.904</td><td class="overall-col second-best">0.915</td>
+            <td class="tnr-col">0.957</td>
+          </tr>
+          <tr>
+            <td class="model-col">Effort [SD-v1.4]</td>
+            <td>0.710</td><td>0.546</td><td>0.658</td><td>0.755</td><td>0.858</td><td>0.890</td>
+            <td class="overall-col">0.795</td><td class="overall-col">0.828</td>
+            <td class="tnr-col">0.853</td>
+          </tr>
+          <tr>
+            <td class="model-col">Effort [Chameleon]</td>
+            <td>0.828</td>
+            <td class="second-best">0.824</td>
+            <td>0.868</td><td>0.882</td><td>0.849</td><td>0.872</td>
+            <td class="overall-col">0.452</td><td class="overall-col">0.838</td>
+            <td class="tnr-col danger">0.051</td>
+          </tr>
+          <tr>
+            <td class="model-col">IAPL [ProGAN]</td>
+            <td>0.255</td><td>0.295</td><td>0.140</td><td>0.122</td><td>0.398</td><td>0.568</td>
+            <td class="overall-col">0.628</td><td class="overall-col">0.438</td>
+            <td class="tnr-col second-best">0.960</td>
+          </tr>
+          <tr>
+            <td class="model-col">IAPL [SD-v1.4]</td>
+            <td class="second-best">0.973</td>
+            <td class="best">0.895</td>
+            <td class="second-best">0.916</td>
+            <td class="best">0.996</td>
+            <td class="second-best">0.955</td>
+            <td class="second-best">0.994</td>
+            <td class="overall-col">0.727</td><td class="overall-col best">0.932</td>
+            <td class="tnr-col danger">0.499</td>
+          </tr>
+          <tr class="baseline-row">
+            <td class="model-col">Random Guessing</td>
+            <td>0.500</td><td>0.500</td><td>0.500</td><td>0.500</td><td>0.500</td><td>0.500</td>
+            <td class="overall-col">0.500</td><td class="overall-col">—</td>
+            <td class="tnr-col">0.500</td>
+          </tr>
+          <tr class="human-row">
+            <td class="model-col">Human Reference</td>
+            <td>0.420</td><td>0.509</td><td>0.539</td><td>0.598</td><td>0.697</td><td>0.709</td>
+            <td class="overall-col">0.686</td><td class="overall-col">0.704</td>
+            <td class="tnr-col">0.793</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="has-text-centered" style="font-size:0.8rem; color:#bbb; margin-top:1rem;">
+      Confidence scores (Conf.) omitted for readability. Full results including Conf. are in the paper.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     BIBTEX
+═══════════════════════════════════════════════════════════════ -->
+<section class="section" id="bibtex">
+  <div class="container is-max-widescreen">
+
+    <h2 class="title is-3 has-text-centered">BibTeX</h2>
+
+    <div class="columns is-centered">
+      <div class="column is-10">
+        <div class="bibtex-block">@misc{yan2026fraudbenchmultimodalbenchmarkdetecting,
+  title         = {FraudBench: A Multimodal Benchmark for Detecting AI-Generated Fraudulent Refund Evidence},
+  author        = {Xinyu Yan and Boyang Chen and Jiaming Zhang and Tiantong Wu and Hong Xi Tae and Yichen He and Tiantong Wang and Yachun Mi and Yurong Hao and Yilei Zhao and Lei Xiao and Longtao Huang and Pengjun Xie and Wei Liu and Wei Yang Bryan Lim},
+  year          = {2026},
+  eprint        = {2605.08820},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV},
+  url           = {https://arxiv.org/abs/2605.08820}
+}</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p style="font-weight:700;">
+        <a href="https://github.com/Tristan0318/FraudBench" target="_blank">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <a href="https://arxiv.org/abs/2605.08820" target="_blank">
+          <i class="ai ai-arxiv"></i> arXiv
+        </a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        <a href="https://huggingface.co/datasets/TristanYan/FraudBench" target="_blank">
+          🤗 Dataset
+        </a>
+      </p>
+    </div>
+
+    <div class="columns is-centered" style="margin-top:0.3rem;">
+      <div class="column is-8">
+        <div class="content has-text-centered" style="font-size:0.82rem; color:#888;">
+          <p>
+            Website template adapted from
+            <a href="https://nerfies.github.io" target="_blank">Nerfies</a>
+            and
+            <a href="https://mathvista.github.io" target="_blank">MathVista</a>,
+            licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+              CC BY-SA 4.0</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

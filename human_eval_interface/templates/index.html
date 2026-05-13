@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Human Eval — Real vs DeepFake</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+
+<div id="login-screen" class="screen">
+  <div class="card">
+    <h1>Human Eval — Real vs DeepFake</h1>
+    <p class="muted">Blind evaluation: judge each image as Real (genuine product photo) or DeepFake (AI-generated).</p>
+
+    <label>Evaluator name
+      <input id="evaluator" type="text" placeholder="e.g. tristan" autofocus />
+    </label>
+
+    <label>Scope
+      <select id="scope">
+        <option value="All">All categories (mixed)</option>
+        {% for c in categories %}
+        <option value="{{ c }}">{{ c }}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <button id="start-btn" class="primary">Start</button>
+    <p id="login-error" class="error" hidden></p>
+  </div>
+</div>
+
+<div id="eval-screen" class="screen" hidden>
+  <header class="topbar">
+    <span><b id="hdr-evaluator"></b> · <span id="hdr-scope"></span></span>
+    <span class="progress">
+      Done: <b id="hdr-done">0</b> / <span id="hdr-total">0</span>
+    </span>
+    <span class="hints muted">F/← Real · J/→ Fake · U Undo</span>
+  </header>
+
+  <main class="stage">
+    <div id="image-wrap">
+      <img id="current-img" alt="" />
+    </div>
+  </main>
+
+  <footer class="actions">
+    <button id="btn-real" class="big real">Real (F)</button>
+    <button id="btn-fake" class="big fake">DeepFake (J)</button>
+    <button id="btn-undo" class="small">↶ Undo (U)</button>
+  </footer>
+
+  <p id="eval-error" class="error" hidden></p>
+</div>
+
+<div id="done-screen" class="screen" hidden>
+  <div class="card">
+    <h1>Evaluation complete</h1>
+    <p class="muted">Summary written to <code id="summary-path"></code></p>
+    <div id="summary-body"></div>
+    <button id="restart-btn" class="primary">Back to start</button>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

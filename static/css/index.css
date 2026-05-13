@@ -1,0 +1,483 @@
+:root {
+  --fraudbench-purple: #5252AD;
+  --fraudbench-purple-light: #F1F0FF;
+  --fraudbench-purple-border: #746FA8;
+  --fraudbench-purple-dark: #3d3d85;
+}
+
+body {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+}
+
+/* ── Navbar ── */
+.navbar {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* ── Hero / Title ── */
+.publication-title {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 2.4rem;
+  line-height: 1.2;
+}
+
+.publication-title span.fraudbench {
+  color: var(--fraudbench-purple);
+  font-weight: 800;
+}
+
+.publication-authors {
+  margin-top: 0.75rem;
+}
+
+.publication-authors .author-block {
+  margin: 0 0.3rem;
+}
+
+.affiliation-block {
+  font-size: 0.95rem;
+  color: #555;
+  margin-top: 0.2rem;
+}
+
+/* ── Link buttons ── */
+.publication-links .link-block {
+  margin: 0.3rem 0.2rem;
+  display: inline-block;
+}
+
+.button.is-fraudbench {
+  background-color: var(--fraudbench-purple);
+  color: #fff;
+  border: none;
+}
+
+.button.is-fraudbench:hover {
+  background-color: var(--fraudbench-purple-dark);
+  color: #fff;
+}
+
+/* ── Stat boxes ── */
+.stat-box {
+  background: var(--fraudbench-purple-light);
+  border: 2px solid var(--fraudbench-purple-border);
+  border-radius: 12px;
+  padding: 1.2rem 1rem;
+  text-align: center;
+}
+
+.stat-box .stat-number {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--fraudbench-purple);
+  line-height: 1;
+}
+
+.stat-box .stat-label {
+  font-size: 0.85rem;
+  color: #444;
+  margin-top: 0.3rem;
+  line-height: 1.3;
+}
+
+/* ── Section headings ── */
+.section-title {
+  color: var(--fraudbench-purple);
+  font-weight: 700;
+  border-left: 4px solid var(--fraudbench-purple);
+  padding-left: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+
+/* ── Dimension cards ── */
+.dimension-card {
+  background: #fff;
+  border: 1.5px solid var(--fraudbench-purple-border);
+  border-radius: 10px;
+  padding: 1.1rem;
+  height: 100%;
+  transition: box-shadow 0.2s;
+}
+
+.dimension-card:hover {
+  box-shadow: 0 4px 18px rgba(82, 82, 173, 0.15);
+}
+
+.dimension-card .dimension-number {
+  background: var(--fraudbench-purple);
+  color: #fff;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+}
+
+.dimension-card .dimension-title {
+  font-weight: 700;
+  color: var(--fraudbench-purple);
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+/* ── Finding tags ── */
+.finding-tag {
+  display: inline-block;
+  background: var(--fraudbench-purple-light);
+  color: var(--fraudbench-purple);
+  border: 1px solid var(--fraudbench-purple-border);
+  border-radius: 4px;
+  padding: 0.2rem 0.65rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-right: 0.3rem;
+}
+
+/* ── Dataset Composition Table ── */
+.dataset-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+.dataset-table thead tr {
+  background: transparent;
+  color: #333;
+  border-bottom: 2px solid #d0d0e8;
+}
+
+.dataset-table thead th {
+  padding: 0.65rem 1.1rem;
+  font-weight: 700;
+  text-align: left;
+  border: none;
+}
+
+.dataset-table thead th.count-col {
+  text-align: right;
+  white-space: nowrap;
+  width: 90px;
+}
+
+.dataset-table tbody td {
+  padding: 0.8rem 1.1rem;
+  border: none;
+  border-bottom: 1px solid #ebebf5;
+  vertical-align: middle;
+  color: #333;
+}
+
+.dataset-table tbody tr:hover {
+  background: var(--fraudbench-purple-light);
+}
+
+.dataset-table .count-col {
+  text-align: right;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--fraudbench-purple);
+  white-space: nowrap;
+}
+
+.dataset-table .desc-col {
+  color: #555;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.dataset-table .total-row td {
+  background: var(--fraudbench-purple-light);
+  border-top: 2px solid var(--fraudbench-purple-border);
+  border-bottom: none;
+  font-weight: 700;
+  color: var(--fraudbench-purple-dark);
+}
+
+.dataset-table .total-row .count-col {
+  font-size: 1.2rem;
+}
+
+.split-badge {
+  display: inline-block;
+  padding: 0.22rem 0.65rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+.split-badge.real-damaged {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+}
+
+.split-badge.real-undamaged {
+  background: #e3f2fd;
+  color: #1565c0;
+  border: 1px solid #90caf9;
+}
+
+.split-badge.fake-damaged {
+  background: #fce4ec;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
+}
+
+/* ── Leaderboard Table (Experimental Results) ── */
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+}
+
+.leaderboard-table th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.leaderboard-table thead tr:first-child th {
+  background: #E8E8FF;
+  color: var(--fraudbench-purple);
+  padding: 0.55rem 0.6rem;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: 700;
+  border-right: 1px solid #d0d0ee;
+  white-space: nowrap;
+}
+
+.leaderboard-table thead tr:first-child th.model-col {
+  text-align: center;
+  vertical-align: middle;
+  min-width: 185px;
+  border-right: 1px solid #d0d0ee;
+}
+
+.leaderboard-table thead tr:last-child th {
+  background: #F1F0FF;
+  color: #5252AD;
+  padding: 0.38rem 0.5rem;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-right: 1px solid #d8d8f0;
+  white-space: nowrap;
+}
+
+.leaderboard-table thead tr:last-child th.overall-col {
+  background: #eae9ff;
+}
+
+.leaderboard-table thead tr:last-child th.tnr-col {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.leaderboard-table tbody td {
+  padding: 0.42rem 0.55rem;
+  text-align: center;
+  border-bottom: 1px solid #ebebf5;
+  border-right: 1px solid #f2f2f8;
+  vertical-align: middle;
+}
+
+.leaderboard-table tbody tr:nth-child(even) {
+  background: #fbfbff;
+}
+
+.leaderboard-table tbody tr:hover {
+  background: var(--fraudbench-purple-light);
+}
+
+.leaderboard-table tbody td.model-col {
+  text-align: left;
+  font-weight: 500;
+  padding-left: 0.9rem;
+  white-space: nowrap;
+  border-right: 2px solid #e0e0f0;
+  background: #fefeff;
+}
+
+.leaderboard-table tbody tr:hover td.model-col {
+  background: var(--fraudbench-purple-light);
+}
+
+.leaderboard-table td.overall-col {
+  background: rgba(241,240,255,0.55);
+  border-right: 1px solid #d8d8f0;
+}
+
+.leaderboard-table tbody tr:hover td.overall-col {
+  background: var(--fraudbench-purple-light);
+}
+
+.leaderboard-table td.tnr-col {
+  background: rgba(232,245,233,0.6);
+  border-left: 2px solid #c8e6c9;
+  font-weight: 600;
+}
+
+.leaderboard-table tbody tr:hover td.tnr-col {
+  background: #d4edda;
+}
+
+.leaderboard-table .best {
+  color: var(--fraudbench-purple);
+  font-weight: 800;
+}
+
+.leaderboard-table .second-best {
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.leaderboard-table .danger {
+  color: #c62828;
+  font-weight: 800;
+}
+
+.leaderboard-table .baseline-row td {
+  color: #aaa;
+  font-style: italic;
+  background: #fafafa !important;
+}
+
+.leaderboard-table .human-row td {
+  color: #777;
+  font-style: italic;
+  border-top: 1px dashed #ccc;
+}
+
+.leaderboard-table .human-row td.tnr-col {
+  background: rgba(232,245,233,0.3) !important;
+}
+
+/* group label pill above each table */
+.group-label {
+  display: inline-block;
+  padding: 0.35rem 1.1rem;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--fraudbench-purple);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.02em;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 8px;
+  border: 1px solid #e0e0f0;
+  box-shadow: 0 2px 8px rgba(82,82,173,0.06);
+}
+
+/* ── Pipeline figure ── */
+.pipeline-figure {
+  border: 1.5px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.pipeline-figure img {
+  width: 100%;
+  display: block;
+}
+
+/* ── Abstract ── */
+.abstract-content {
+  background: var(--fraudbench-purple-light);
+  border-left: 4px solid var(--fraudbench-purple);
+  border-radius: 0 10px 10px 0;
+  padding: 1.5rem 2rem;
+  line-height: 1.75;
+  font-size: 1rem;
+}
+
+/* ── Note box ── */
+.note-box {
+  background: #fff8f0;
+  border: 1.5px solid #e8a04a;
+  border-radius: 8px;
+  padding: 0.8rem 1.2rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #7a4a00;
+}
+
+/* ── Dilemma box ── */
+.dilemma-box {
+  border: 2px solid var(--fraudbench-purple-border);
+  border-radius: 12px;
+  padding: 1.3rem 1.5rem;
+  background: var(--fraudbench-purple-light);
+  text-align: center;
+}
+
+.dilemma-box .dilemma-label {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--fraudbench-purple);
+}
+
+.dilemma-box .vs-label {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #999;
+  margin: 0 0.5rem;
+}
+
+/* ── BibTeX ── */
+.bibtex-block {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.2rem 1.5rem;
+  font-family: monospace;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* ── Footer ── */
+.footer {
+  background: #fafafa;
+  border-top: 1px solid #eee;
+  padding: 2rem 1.5rem;
+}
+
+/* ── Generator badge ── */
+.generator-badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #e8e8ff;
+  color: var(--fraudbench-purple);
+  margin: 0.15rem;
+}
+
+/* ── Tag pill ── */
+.tag.is-fraudbench {
+  background: var(--fraudbench-purple);
+  color: #fff;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .publication-title {
+    font-size: 1.7rem;
+  }
+  .stat-box .stat-number {
+    font-size: 1.7rem;
+  }
+}
