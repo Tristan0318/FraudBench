@@ -7,7 +7,7 @@
     <img src="https://img.shields.io/badge/arXiv-2605.08820-b31b1b.svg?style=for-the-badge&logo=arxiv&logoWidth=20" alt="arXiv"></a>
   &nbsp;&nbsp;
   <a href="https://tristan0318.github.io/FraudBench/">
-    <img src="https://img.shields.io/badge/Project-Page-779977?style=for-the-badge&logoWidth=20" alt="Project Page"></a>
+    <img src="https://img.shields.io/badge/Project-Page-5252AD?style=for-the-badge&logoWidth=20" alt="Project Page"></a>
   &nbsp;&nbsp;
   <a href="https://huggingface.co/datasets/TristanYan/FraudBench">
     <img src="https://img.shields.io/badge/🤗-Dataset-FF6B00?style=for-the-badge&logoWidth=20" alt="HuggingFace Dataset"></a>
@@ -18,14 +18,14 @@
   <a href="https://openreview.net/profile?id=~Boyang_Chen6">Boyang Chen</a><sup>1</sup>,
   <a href="https://jiamingzhang94.github.io/">Jiaming Zhang</a><sup>1</sup>,
   <a href="https://scholar.google.com/citations?user=7YsN6lMAAAAJ">Tiantong Wu</a><sup>1,2</sup>,
-  <a href="https://bryanhx.github.io/">Hong Xi Tae</a><sup>1</sup>,
-  <a href="https://openreview.net/profile?id=~Yichen_He5">Yichen He</a><sup>1</sup>,<br>
+  <a href="https://bryanhx.github.io/">Hong Xi Tae</a><sup>1</sup>,<br>
+  <a href="https://openreview.net/profile?id=~Yichen_He5">Yichen He</a><sup>1</sup>,
   <a href="https://openreview.net/profile?id=~Tiantong_Wang1">Tiantong Wang</a><sup>1,2</sup>,
   <a href="https://scholar.google.com/citations?user=hqLGERIAAAAJ">Yachun Mi</a><sup>1</sup>,
   <a href="https://yuronghaoa.github.io/yuronghaoA/">Yurong Hao</a><sup>1</sup>,
-  <a href="https://elainezhao92.github.io/">Yilei Zhao</a><sup>1</sup>,
+  <a href="https://elainezhao92.github.io/">Yilei Zhao</a><sup>1</sup>,<br>
   <a href="https://openreview.net/profile?id=~Lei_Xiao7">Lei Xiao</a><sup>3</sup>,
-  <a href="https://scholar.google.com/citations?user=EQDfV9cAAAAJ">Longtao Huang</a><sup>3</sup>,<br>
+  <a href="https://scholar.google.com/citations?user=EQDfV9cAAAAJ">Longtao Huang</a><sup>3</sup>,
   <a href="https://scholar.google.com/citations?user=K2CHjf0AAAAJ">Pengjun Xie</a><sup>3</sup>,
   <a href="https://scholar.google.com/citations?user=yXeVDeoAAAAJ">Wei Liu</a><sup>3</sup>,
   <a href="https://sites.google.com/view/wyb/people">Wei Yang Bryan Lim</a><sup>1</sup>
