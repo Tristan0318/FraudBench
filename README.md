@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <a href="https://scholar.google.com/citations?user=QXkrWQoAAAAJ">Xinyu Yan</a><sup>1,2</sup>,
+  <a href="https://tristan0318.github.io/">Xinyu Yan</a><sup>1,2</sup>,
   <a href="https://openreview.net/profile?id=~Boyang_Chen6">Boyang Chen</a><sup>1</sup>,
   <a href="https://jiamingzhang94.github.io/">Jiaming Zhang</a><sup>1</sup>,
   <a href="https://scholar.google.com/citations?user=7YsN6lMAAAAJ">Tiantong Wu</a><sup>1,2</sup>,
