@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2605.08820">
+  <a href="https://arxiv.org/abs/2605.08820v2">
     <img src="https://img.shields.io/badge/arXiv-2605.08820-b31b1b.svg?style=for-the-badge&logo=arxiv&logoWidth=20" alt="arXiv"></a>
   &nbsp;&nbsp;
   <a href="https://tristan0318.github.io/FraudBench/">
@@ -19,10 +19,10 @@
   <a href="https://jiamingzhang94.github.io/">Jiaming Zhang</a><sup>1</sup>,
   <a href="https://scholar.google.com/citations?user=7YsN6lMAAAAJ">Tiantong Wu</a><sup>1,2</sup>,
   <a href="https://bryanhx.github.io/">Hong Xi Tae</a><sup>1</sup>,<br>
-  <a href="https://openreview.net/profile?id=~Yichen_He5">Yichen He</a><sup>1</sup>,
-  <a href="https://openreview.net/profile?id=~Tiantong_Wang1">Tiantong Wang</a><sup>1,2</sup>,
-  <a href="https://scholar.google.com/citations?user=hqLGERIAAAAJ">Yachun Mi</a><sup>1</sup>,
   <a href="https://yuronghaoa.github.io/yuronghaoA/">Yurong Hao</a><sup>1</sup>,
+  <a href="https://scholar.google.com/citations?user=hqLGERIAAAAJ">Yachun Mi</a><sup>1</sup>,
+  <a href="https://openreview.net/profile?id=~Tiantong_Wang1">Tiantong Wang</a><sup>1,2</sup>,
+  <a href="https://openreview.net/profile?id=~Yichen_He5">Yichen He</a><sup>1</sup>,
   <a href="https://elainezhao92.github.io/">Yilei Zhao</a><sup>1</sup>,<br>
   <a href="https://openreview.net/profile?id=~Lei_Xiao7">Lei Xiao</a><sup>3</sup>,
   <a href="https://scholar.google.com/citations?user=EQDfV9cAAAAJ">Longtao Huang</a><sup>3</sup>,
@@ -347,12 +347,12 @@ If you find this work useful, please kindly consider citing our paper:
 
 ```bibtex
 @misc{yan2026fraudbenchmultimodalbenchmarkdetecting,
-      title={FraudBench: A Multimodal Benchmark for Detecting AI-Generated Fraudulent Refund Evidence},
-      author={Xinyu Yan and Boyang Chen and Jiaming Zhang and Tiantong Wu and Hong Xi Tae and Yichen He and Tiantong Wang and Yachun Mi and Yurong Hao and Yilei Zhao and Lei Xiao and Longtao Huang and Pengjun Xie and Wei Liu and Wei Yang Bryan Lim},
+      title={FraudBench: A Multimodal Benchmark for Detecting AI-Generated Fraudulent Refund Evidence}, 
+      author={Xinyu Yan and Boyang Chen and Jiaming Zhang and Tiantong Wu and Hong Xi Tae and Yurong Hao and Yachun Mi and Tiantong Wang and Yichen He and Yilei Zhao and Lei Xiao and Longtao Huang and Pengjun Xie and Wei Liu and Wei Yang Bryan Lim},
       year={2026},
       eprint={2605.08820},
       archivePrefix={arXiv},
       primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2605.08820},
+      url={https://arxiv.org/abs/2605.08820}, 
 }
 ```
